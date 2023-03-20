@@ -7,14 +7,15 @@ class Background {
         this.html = document.createElement('div');
         this.setup();
     }
-    static id : number = 0;
+    private static id : number = 0;
     public self_id : number;
     public params : BackgroundParameters;
     public html : HTMLDivElement;
 
     private setup() {
-        this.html.style.width = `${this.params.width}px`
-        this.html.style.height = `${this.params.height}px`
+        this.html.id =`bg:${this.self_id}`;
+        this.html.style.width = `${this.params.width}px`;
+        this.html.style.height = `${this.params.height}px`;
         this.html.style.backgroundColor = this.params.color!;
         this.html.style.zIndex = '1';
     }
