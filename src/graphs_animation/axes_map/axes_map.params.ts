@@ -3,9 +3,10 @@ const DefaultAxesMapParameters : AxesMapParameters = {
     y_units : 4,
     x_sub_units : 5,
     y_sub_units : 5,
+    origin : [2,2],
     line_width : 1,
     sub_line_width : 0.2,
-    color : '#ffffff'
+    color : '#ffffff',
 }
 
 class AxesMapParameters {
@@ -14,6 +15,7 @@ class AxesMapParameters {
         this.y_units = params.y_units || DefaultAxesMapParameters.y_units;
         this.x_sub_units = params.x_sub_units || DefaultAxesMapParameters.x_sub_units;
         this.y_sub_units = params.y_sub_units || DefaultAxesMapParameters.y_sub_units;
+        this.origin = params.origin || DefaultAxesMapParameters.origin;
         this.line_width = params.line_width || DefaultAxesMapParameters.line_width;
         this.sub_line_width = params.sub_line_width || DefaultAxesMapParameters.sub_line_width;
         this.color = params.color || DefaultAxesMapParameters.color;
@@ -22,6 +24,7 @@ class AxesMapParameters {
     public y_units? : number;
     public x_sub_units? : number;
     public y_sub_units? : number;
+    public origin? : [number, number];
     public line_width? : number;
     public sub_line_width? : number;
     public color? : string;

@@ -16,8 +16,11 @@ class AxesMap {
     public html : HTMLCanvasElement;
 
     private setup() {
+        this.html.id =`axes_map:${this.self_id}`;
         this.html.width = this.background.params.width!;
         this.html.height = this.background.params.height!;
+        this.html.style.position = 'absolute';
+        this.html.style.zIndex = '2';
         const ctx = this.html.getContext('2d')!;
         ctx.strokeStyle = this.params.color!;
         this.createLines(ctx);
