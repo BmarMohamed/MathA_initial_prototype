@@ -59,7 +59,7 @@ class Vector {
         const second_point = [0,0];
         const beta = (Math.PI * 2 / 3) - alpha;
         const third_point  = [0,0];
-        if(this.params.from_to![2] <= 0) {
+        if(this.params.from_to![2] - this.params.from_to![0] <= 0) {
             second_point[0] = first_point[0] + (Math.cos(alpha) * this.params.head_size!);
             second_point[1] = first_point[1] - (Math.sin(alpha) * this.params.head_size!);
             third_point[0] = first_point[0] - (Math.cos(beta) * this.params.head_size!);
