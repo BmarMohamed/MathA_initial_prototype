@@ -30,7 +30,7 @@ class AxesMap {
     private createLines(ctx : CanvasRenderingContext2D) {
         ctx.lineWidth = this.params.line_width!;
         let x = 0;
-        for(let i = 0; i < this.params.x_units!; i++) {
+        for(let i = 0; i < this.params.x_units! - 1; i++) {
             ctx.beginPath();
             x += (this.background.params.width! / this.params.x_units!);
             ctx.moveTo(x - (this.params.line_width! / 2), 0)
@@ -38,7 +38,7 @@ class AxesMap {
             ctx.stroke();
         }
         let y = 0;
-        for(let i = 0; i < this.params.y_units!; i++) {
+        for(let i = 0; i < this.params.y_units! - 1; i++) {
             ctx.beginPath();
             y += (this.background.params.height! / this.params.y_units!);
             ctx.moveTo(0, y - (this.params.line_width! / 2))
@@ -51,7 +51,7 @@ class AxesMap {
         ctx.lineWidth = this.params.sub_line_width!;
         let x = 0;
         let x_sub_units = this.params.x_units! * this.params.x_sub_units!
-        for(let i = 0; i < x_sub_units!; i++) {
+        for(let i = 0; i < x_sub_units! - 1; i++) {
             ctx.beginPath();
             x += (this.background.params.width! / x_sub_units!);
             ctx.moveTo(x - (this.params.line_width! / 2), 0)
@@ -60,7 +60,7 @@ class AxesMap {
         }
         let y = 0;
         let y_sub_units = this.params.y_units! * this.params.y_sub_units!
-        for(let i = 0; i < y_sub_units!; i++) {
+        for(let i = 0; i < y_sub_units! - 1; i++) {
             ctx.beginPath();
             y += (this.background.params.height! / y_sub_units!);
             ctx.moveTo(0, y - (this.params.line_width! / 2))
