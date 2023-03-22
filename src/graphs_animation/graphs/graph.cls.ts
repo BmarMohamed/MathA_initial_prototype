@@ -25,7 +25,7 @@ class Graph {
         this.html.width = this.background.params.width!;
         this.html.height = this.background.params.height!;
         this.html.style.position = 'absolute';
-        this.html.style.zIndex = '3';
+        this.html.style.zIndex = '4';
         const ctx = this.html.getContext('2d')!;
         this.draw(ctx);
     }
@@ -37,7 +37,7 @@ class Graph {
         })
     }
 
-    private getOrigin() : [number, number] {
+    public getOrigin() : [number, number] {
         const origin : [number, number] = [0,0];
         origin[0] = this.background.params.width! * this.axes_map.params.origin![0] / this.axes_map.params.x_units!;
         origin[1] = this.background.params.height! * this.axes_map.params.origin![1] / this.axes_map.params.y_units!;
@@ -56,9 +56,9 @@ class Graph {
         }
     }
 
-    private getPointes(domain : [number, number], origin : [number, number]) : Array<[number, number]> {
+    public getPointes(domain : [number, number], origin : [number, number]) : Array<[number, number]> {
         const pointes : Array<[number, number]> = [];
-        for(let i = domain[0]; i <= domain[1]; i += 0.01) {
+        for(let i = domain[0]; i <= domain[1]; i += this.params.step!) {
             let point = this.getPoint(i, this.params.expression!(i), origin)
             pointes.push([point[0], point[1]]);
         }
