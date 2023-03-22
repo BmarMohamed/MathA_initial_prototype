@@ -1,3 +1,0 @@
-#1 - func : getHeadPoints {
-    fix wrong head direction
-}
