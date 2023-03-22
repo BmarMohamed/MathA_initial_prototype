@@ -2,8 +2,6 @@ import Background from "../background/background.cls.js";
 import AxesMap from "../axes_map/axes_map.cls.js";
 import GraphParameters from "./graph.params.js";
 
-//step (const) 0.01
-
 class Graph {
     constructor(params : GraphParameters, axes_map : AxesMap) {
         this.self_id = Graph.id++;
@@ -31,21 +29,12 @@ class Graph {
     }
 
     private draw(ctx : CanvasRenderingContext2D) {
-        const origin = this.getOrigin()
-        this.params.domains!.forEach((domain) => {
-            this.drawGraphInDomain(origin, domain, ctx);
-        })
-    }
-
-    public getOrigin() : [number, number] {
-        const origin : [number, number] = [0,0];
-        origin[0] = this.background.params.width! * this.axes_map.params.origin![0] / this.axes_map.params.x_units!;
-        origin[1] = this.background.params.height! * this.axes_map.params.origin![1] / this.axes_map.params.y_units!;
-        return origin;
+        const origin = this.axes_map.getOrigin();
+        this.params.domains!.forEach(domain => this.drawGraphInDomain(origin, domain, ctx))
     }
 
     private drawGraphInDomain(origin : [number, number], domain : [number, number], ctx : CanvasRenderingContext2D) {
-        let pointes = this.getPointes(domain, origin);
+        let pointes = Graph.getPointes(this, domain, origin, this.params.step!);
         ctx.strokeStyle = this.params.color!;
         ctx.lineWidth = this.params.line_width!;
         for(let i = 0; i < pointes.length - 1; i++) {
@@ -56,12 +45,9 @@ class Graph {
         }
     }
 
-    public getPointes(domain : [number, number], origin : [number, number]) : Array<[number, number]> {
+    public static getPointes(graph : Graph, domain : [number, number], origin : [number, number], step : number) : Array<[number, number]> {
         const pointes : Array<[number, number]> = [];
-        for(let i = domain[0]; i <= domain[1]; i += this.params.step!) {
-            let point = this.getPoint(i, this.params.expression!(i), origin)
-            pointes.push([point[0], point[1]]);
-        }
+        for(let i = domain[0]; i <= domain[1]; i += step) pointes.push([...graph.getPoint(i, graph.params.expression!(i), origin)]);
         return pointes;
     }
 

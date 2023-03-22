@@ -3,8 +3,6 @@ import AxesMap from "../axes_map/axes_map.cls.js";
 import Graph from "../graphs/graph.cls.js";
 import IntegralParameters from "./integral.params.js";
 
-/* TODO FIX DYNAMIC PATHES + GEERA WITH GRAPHS */
-
 class Integral {
     constructor(params : IntegralParameters, graph1 : Graph, graph2 : Graph) {
         this.self_id = Integral.id++;
@@ -53,9 +51,9 @@ class Integral {
 
     private getPathes() {
         const pathes = [];
-        const origin = this.graph1.getOrigin();
-        const graph1_points = this.graph1.getPointes(this.params.domains![0], origin);
-        const graph2_points = this.graph2.getPointes(this.params.domains![0], origin);
+        const origin = this.axes_map.getOrigin();
+        const graph1_points = Graph.getPointes(this.graph1, this.params.domain!, origin, this.params.step!);
+        const graph2_points = Graph.getPointes(this.graph2, this.params.domain!, origin, this.params.step!);
         for(let i = 0; i < graph1_points.length - 1; i++) {
             pathes.push([
                 graph1_points[i],

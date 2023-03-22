@@ -69,6 +69,14 @@ class AxesMap {
         }
     }
 
+    public getOrigin() : [number, number] {
+        const origin : [number, number] = [0,0];
+        origin[0] = this.background.params.width! * this.params.origin![0] / this.params.x_units!;
+        origin[1] = this.background.params.height! * this.params.origin![1] / this.params.y_units!;
+        return origin;
+    }
+
+
     public render() {
         this.background.html.appendChild(this.html);
         return this;
