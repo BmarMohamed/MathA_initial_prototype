@@ -17,13 +17,17 @@ class Frame {
 
 //Methods===========================================================================================================================================
 
+    public getNext() : Frame {
+        return this.next || this;
+    }
+
     public do(element : VisualElement, action : string, ...params : any[]) {
         const parameters = [this.frame_number, element, ...params];
         this.actions.push([element, action, parameters])
         return this;
     }
 
-    public addAction(element : VisualElement, action : string, ...params : any[]) {
+    public doAction(element : VisualElement, action : string, ...params : any[]) {
         this.actions.push([element, action, params])
         return this;
     }
