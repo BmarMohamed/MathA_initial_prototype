@@ -55,6 +55,7 @@ function CreateAndRenderAnimation() {
     `
         display : inline-block;
         position : realtive;
+        perspective : 100px;
         width : ${Animation.resolution[0]}px;
         height : ${Animation.resolution[1]}px;
         background-color : ${Animation.background_color};

@@ -71,7 +71,6 @@ class CoordinatesPlane extends VisualElement {
 //===========================================================================================================================================
 
     private drawAction(width : number, height : number) {
-
         this.clear();
         //draw horizontal lines
         for(let i = 0; i < this.horizontal_lines_start_points.length; i++) {
@@ -100,7 +99,7 @@ class CoordinatesPlane extends VisualElement {
 
 //===========================================================================================================================================
 
-    private linearAnimatedDraw(from : number, element : CoordinatesPlane, duration : number) {
+    private linearDraw(from : number, element : CoordinatesPlane, duration : number) {
         let current_frame = Animation.at(from).getNext();
         for(let i = 1; i <= duration; i++) {
             const width = this.settings.width / duration * i;

@@ -19,11 +19,33 @@ const ResolutionAndCoordinatesDefaultValue : IResolutionAndCoordinates = {
 const DefaultSettings : {
     CoordinatesPlane : IResolutionAndCoordinates & {
         sub_units? : [number, number];
+    },
+    Graph : IResolutionAndCoordinates & {
+        unwanted_values? : number[];
+        unwanted_domains? : Array<[number, number]>;
+        expression? : (x : number) => number;
+        step? : number;
+        accuracy? : number; 
+    },
+    Point : IResolutionAndCoordinates & {
+        location? : [number, number]
     }
 } = {
     CoordinatesPlane : {
         ...ResolutionAndCoordinatesDefaultValue,
         sub_units : [2, 2],
+    },
+    Graph :  {
+        ...ResolutionAndCoordinatesDefaultValue,
+        unwanted_values : [],
+        unwanted_domains : [],
+        expression : (x : number) => x,
+        step : 0.01,
+        accuracy : 4,
+    },
+    Point : {
+        ...ResolutionAndCoordinatesDefaultValue,
+        location : [0, 0],
     }
 }
 

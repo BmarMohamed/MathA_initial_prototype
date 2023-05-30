@@ -34,6 +34,30 @@ class VisualElement {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
+    protected getCoordinatesOf(x : number, y : number) : [number, number] {
+        if(
+            this["settings"]["width"] &&
+            this["settings"]["height"] &&
+            this["settings"]["domain"] &&
+            this["settings"]["range"]
+        ) {
+            return[
+                (x - this["settings"]["domain"][0]) 
+                * 
+                this["settings"]["width"] 
+                / 
+                (this["settings"]["domain"][1] - this["settings"]["domain"][0]),
+
+                this["settings"]["height"] - (y - this["settings"]["range"][0]) 
+                * 
+                this["settings"]["height"] 
+                / 
+                (this["settings"]["range"][1] - this["settings"]["range"][0]),
+            ]
+        }
+        else return [0, 0];
+    }
+
 //===========================================================================================================================================
 
 }
