@@ -34,8 +34,6 @@ class CoordinatesPlane extends VisualElement {
         this.context.translate(this.settings.position[0], this.settings.position[1]);
     }
 
-//===========================================================================================================================================
-
     private getHorizontalLinesStartPoints() {
         const horizontal_lines_start_points = [];
         let y_units_number = ((this.settings.range[1] - this.settings.range[0]) * this.settings.sub_units[1]);
@@ -47,8 +45,6 @@ class CoordinatesPlane extends VisualElement {
         }
         return horizontal_lines_start_points;
     }
-
-//===========================================================================================================================================
 
     private getVerticalLinesStartPoints() {
         const vertical_lines_start_points = [];
@@ -62,13 +58,9 @@ class CoordinatesPlane extends VisualElement {
         return vertical_lines_start_points;
     }
 
-//===========================================================================================================================================
-
     public draw() {
         this.drawAction(this.settings.width, this.settings.height);
     }
-
-//===========================================================================================================================================
 
     private drawAction(width : number, height : number) {
         this.clear();
@@ -97,8 +89,6 @@ class CoordinatesPlane extends VisualElement {
 
     }
 
-//===========================================================================================================================================
-
     private linearDraw(from : number, element : CoordinatesPlane, duration : number) {
         let current_frame = Animation.at(from).getNext();
         for(let i = 1; i <= duration; i++) {
@@ -109,11 +99,9 @@ class CoordinatesPlane extends VisualElement {
         }
     }
 
-//===========================================================================================================================================
-
 }
 
-//===========================================================================================================================================
+//Getters===========================================================================================================================================
 
 function getSettings(settings : typeof DefaultSettings.CoordinatesPlane) {
     return {
@@ -126,8 +114,6 @@ function getSettings(settings : typeof DefaultSettings.CoordinatesPlane) {
     }
 }
 
-//===========================================================================================================================================
-
 function getSetyles(styles : typeof DefaultStyles.CoordinatesPlane) {
     return {
         line_width : styles.line_width || DefaultStyles.CoordinatesPlane.line_width!,
@@ -136,6 +122,6 @@ function getSetyles(styles : typeof DefaultStyles.CoordinatesPlane) {
     }
 }
 
-//===========================================================================================================================================
+//Export===========================================================================================================================================
 
 export default CoordinatesPlane;

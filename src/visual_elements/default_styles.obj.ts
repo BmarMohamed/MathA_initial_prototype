@@ -16,7 +16,8 @@ const DefaultSettings : {
     Point : {
         color? : string,
         radius? : number,
-    }
+    },
+    Line : ILineProperties;
 } = {
     CoordinatesPlane : {
         ...LinePropertiesDefaultValue,
@@ -28,6 +29,9 @@ const DefaultSettings : {
     Point : {
         color : LinePropertiesDefaultValue.color,
         radius : 5,
+    },
+    Line : {
+        ...LinePropertiesDefaultValue,
     }
 }
 

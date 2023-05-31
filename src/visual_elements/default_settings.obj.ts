@@ -29,7 +29,20 @@ const DefaultSettings : {
     },
     Point : IResolutionAndCoordinates & {
         location? : [number, number]
-    }
+    },
+    HorizontalLine : IResolutionAndCoordinates & {
+        location? : [number, number];
+        length? : number;
+    },
+    VerticalLine : IResolutionAndCoordinates & {
+        location? : [number, number];
+        length? : number;
+    },
+    DiagonalLine : IResolutionAndCoordinates & {
+        location? : [number, number];
+        length? : number;
+        slope? : number;
+    },
 } = {
     CoordinatesPlane : {
         ...ResolutionAndCoordinatesDefaultValue,
@@ -46,7 +59,23 @@ const DefaultSettings : {
     Point : {
         ...ResolutionAndCoordinatesDefaultValue,
         location : [0, 0],
-    }
+    },
+    HorizontalLine : {
+        ...ResolutionAndCoordinatesDefaultValue,
+        location : [-1, 0],
+        length : 2,
+    },
+    VerticalLine : {
+        ...ResolutionAndCoordinatesDefaultValue,
+        location : [0, -1],
+        length : 2,
+    },
+    DiagonalLine : {
+        ...ResolutionAndCoordinatesDefaultValue,
+        location : [-1, -1],
+        length : 2,
+        slope : 1,
+    },
 }
 
 export default DefaultSettings;

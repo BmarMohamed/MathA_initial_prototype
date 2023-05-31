@@ -166,8 +166,8 @@ class Graph extends VisualElement {
 
 function getSettings(settings : typeof DefaultSettings.Graph) {
     return {
-        width : settings.width || DefaultSettings.CoordinatesPlane.width!,
-        height : settings.height || DefaultSettings.CoordinatesPlane.height!,
+        width : settings.width || DefaultSettings.Graph.width!,
+        height : settings.height || DefaultSettings.Graph.height!,
         domain : settings.domain || DefaultSettings.Graph.domain!,
         range : settings.range || DefaultSettings.Graph.range!,
         position : settings.position || DefaultSettings.Graph.position!,
